@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EZUJIA_HFT_2022232.Models\EZUJIA_HFT_2022232.Models.csproj" />
+    <ProjectReference Include="..\EZUJIA_HFT_2022232.Repository\EZUJIA_HFT_2022232.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
