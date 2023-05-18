@@ -9,6 +9,14 @@ namespace EZUJIA_HFT_2022232.Logic
 {
     interface ICarLogic
     {
-       
+        void Create(Cars item);
+
+        void Delete(int id);
+
+        Cars Read(int id);
+
+        IEnumerable<Cars> ReadAll();
+
+        void Update(Cars item);
     }
 }
