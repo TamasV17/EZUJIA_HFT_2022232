@@ -24,7 +24,7 @@ namespace EZUJIA_HFT_2022232.Models
 
         //public int EmployeesId { get; set; }
 
-        public virtual ICollection<Rent> Owner { get; set; }
+        public virtual Rent Owner { get; set; }
 
         public Cars(string path)
         {

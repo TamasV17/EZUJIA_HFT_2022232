@@ -33,7 +33,7 @@ namespace EZUJIA_HFT_2022232.Repository
         {
 
 
-            modelBuilder.Entity<Rent>().HasOne(t => t.CarId).WithMany(t => t.Owner).HasForeignKey(t => t.RentcarId);
+            modelBuilder.Entity<Rent>().HasOne(t => t.CarId).WithOne(t => t.Owner);
 
             modelBuilder.Entity<Rent>().HasOne(t => t.Employees).WithMany(t => t.RentCar).HasForeignKey(t => t.EmployeesID);
 
