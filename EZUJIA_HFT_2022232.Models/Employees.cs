@@ -21,7 +21,7 @@ namespace EZUJIA_HFT_2022232.Models
         public string PhoneNumer { get; set; }
 
         public string DateOfBirth { get; set; }
-        public virtual ICollection<Rent> RentCar { get; set; }
+        public virtual Rent RentCar { get; set; }
 
 
         public Employees()
@@ -37,7 +37,7 @@ namespace EZUJIA_HFT_2022232.Models
             ClassName = splitarray[2];
             PhoneNumer = splitarray[3];
             DateOfBirth = splitarray[4];
-            //RentCar = new HashSet<Rent>();
+            
 
 
 

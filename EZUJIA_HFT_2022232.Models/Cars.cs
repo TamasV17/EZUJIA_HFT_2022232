@@ -15,6 +15,7 @@ namespace EZUJIA_HFT_2022232.Models
         public int CarsID { get; set; }
 
         public string Type { get; set; }
+        public int CarBrandId { get; set; }
 
         public string LicensePlateNumber { get; set; }
 
@@ -24,19 +25,18 @@ namespace EZUJIA_HFT_2022232.Models
 
         //public int EmployeesId { get; set; }
 
-        public virtual Rent Owner { get; set; }
-
+        public virtual ICollection<Rent> AllRents { get; set; }
         public Cars(string path)
         {
-            string[] splitarray = path.Split(",");
-            Brand = splitarray[0];
-            RentcarId = int.Parse(splitarray[1]);
+            string[] splitarray = path.Split(',');
+
+            CarBrandId = int.Parse(splitarray[0]);
+            CarsID = int.Parse(splitarray[1]);
             Type = splitarray[2];
             LicensePlateNumber = splitarray[3];
             Year = int.Parse(splitarray[4]);
-            PerformanceInHP = int.Parse(splitarray[4]);
-            //EmployeesId = int.Parse(splitarray[5]);
-            //Owner = new HashSet<Employees>();
+            PerformanceInHP = int.Parse(splitarray[5]);
+            this.AllRents = new HashSet<Rent>();
 
         }
         public Cars()
