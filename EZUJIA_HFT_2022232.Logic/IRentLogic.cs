@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Logic
 {
-    internal interface IRentLogic
+    public interface IRentLogic
     {
         void Create(Rent item);
 

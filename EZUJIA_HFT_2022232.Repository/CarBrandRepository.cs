@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Repository
 {
-    class CarBrandRepository : Repository<CarBrand>
+    public class CarBrandRepository : Repository<CarBrand>
     {
 
         public CarBrandRepository(MyDbContext ctx)

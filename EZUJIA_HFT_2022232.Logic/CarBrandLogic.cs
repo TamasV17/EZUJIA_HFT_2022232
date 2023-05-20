@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Logic
 {
-    class CarBrandLogic : ICarBrandLogic
+    public class CarBrandLogic : ICarBrandLogic
     {
         IRepository<CarBrand> repo;
         public void Create(CarBrand item)

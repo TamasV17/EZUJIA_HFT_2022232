@@ -11,7 +11,7 @@ namespace EZUJIA_HFT_2022232.Models
     public class Rent
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RentId { get; set; }
 
         public string RentTime { get; set; }
@@ -26,11 +26,15 @@ namespace EZUJIA_HFT_2022232.Models
 
         public Rent(string path)
         {
-            string[] array = path.Split(';');
+            string[] array = path.Split(',');
             RentId = int.Parse(array[0]);
             RentTime = array[1];
             OwnerName = array[2];
             CarsId = int.Parse(array[3]);
+        }
+        public Rent()
+        {
+
         }
     }
 }

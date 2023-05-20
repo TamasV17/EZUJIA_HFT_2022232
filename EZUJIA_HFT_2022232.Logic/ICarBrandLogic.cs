@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Logic
 {
-    interface ICarBrandLogic
+    public interface ICarBrandLogic
     {
         void Create(CarBrand item);
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Logic
 {
-    interface ICarLogic
+    public interface ICarLogic
     {
         void Create(Cars item);
 
@@ -18,5 +18,6 @@ namespace EZUJIA_HFT_2022232.Logic
         IEnumerable<Cars> ReadAll();
 
         void Update(Cars item);
+        IEnumerable<int> TheMostFamousBrand();
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Logic
 {
-    class RentsLogic : IRentLogic
+    public class RentLogic : IRentLogic
     {
         IRepository<Rent> repo;
         public void Create(Rent item)

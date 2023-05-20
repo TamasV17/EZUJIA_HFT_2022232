@@ -178,22 +178,25 @@ namespace EZUJIA_HFT_2022232.Repository
 
             modelBuilder.Entity<Rent>().HasData(new Rent[]
             {
-                new Rent("1,2022-10-11,Lily Parker,1")
+                new Rent("1,2020-9-11,Lily Parker,1"),
+                new Rent("3,2012-10-11,Maxwell Foster,2"),
+                new Rent("11,2002-01-11,Ella Clark,3"),
+                new Rent("5,2015-04-25,James Martinez,10")
             });
 
             modelBuilder.Entity<CarBrand>().HasData(new CarBrand[]
             {
-                new CarBrand("BMW,1"),
-                new CarBrand("Mercedes-Benz,2"),
-                new CarBrand("Ford,3"),
-                new CarBrand("Volkswagen,4"),
-                new CarBrand("Volvo,5"),
-                new CarBrand("Hyundai,6"),
-                new CarBrand("Chevrolet,7"),
-                new CarBrand("Honda,9"),
-                new CarBrand("Toyota,10"),
-                new CarBrand("Honda,11"),
-                new CarBrand("Audi,12"),
+                new CarBrand("1,BMW"),
+                new CarBrand("2,Mercedes-Benz"),
+                new CarBrand("3,Ford"),
+                new CarBrand("4,Volkswagen"),
+                new CarBrand("5,Volvo"),
+                new CarBrand("6,Hyundai"),
+                new CarBrand("7,Chevrolet,"),
+                new CarBrand("9,Honda"),
+                new CarBrand("10,Toyota"),
+                new CarBrand("11,Honda"),
+                new CarBrand("12,Audi"),
 
         });
 

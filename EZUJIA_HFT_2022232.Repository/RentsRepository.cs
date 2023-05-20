@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Repository
 {
-    class RentsRepository : Repository<Rent>
+    public class RentsRepository : Repository<Rent>
     {
         public RentsRepository(MyDbContext ctx)
         {

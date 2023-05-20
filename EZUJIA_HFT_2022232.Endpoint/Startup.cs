@@ -1,3 +1,6 @@
+using EZUJIA_HFT_2022232.Logic;
+using EZUJIA_HFT_2022232.Models;
+using EZUJIA_HFT_2022232.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,27 +15,21 @@ namespace EZUJIA_HFT_2022232.Endpoint
 {
     public class Startup
     {
-       
+
         public void ConfigureServices(IServiceCollection services)
         {
-        }
+            services.AddTransient<MyDbContext>();
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            services.AddTransient<IRepository<Cars>, CarsRepository>();
+            services.AddTransient<IRepository<CarBrand>, CarBrandRepository>();
+            services.AddTransient<IRepository<Rent>, RentsRepository>();
 
-            app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            services.AddTransient<ICarLogic, CarsLogic>();
+            services.AddTransient<ICarBrandLogic, CarBrandLogic>();
+            services.AddTransient<IRentLogic, RentLogic>();
+
+
         }
     }
 }

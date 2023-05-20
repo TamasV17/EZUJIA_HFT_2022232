@@ -10,7 +10,7 @@ namespace EZUJIA_HFT_2022232.Models
         public string Brand { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RentcarId { get; set; }
         public int CarsID { get; set; }
 
@@ -41,8 +41,10 @@ namespace EZUJIA_HFT_2022232.Models
         }
         public Cars()
         {
-            //Owner = new HashSet<Employees>();
+            this.AllRents = new HashSet<Rent>();
+
         }
+
 
     }
 }
