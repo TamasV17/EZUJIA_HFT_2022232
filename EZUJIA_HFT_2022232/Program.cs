@@ -13,13 +13,14 @@ namespace EZUJIA_HFT_2022232
 {
     class Program
     {
+
         static CarsLogic carlogic;
         static CarBrandLogic carbrandlogic;
         static RentLogic rentslogic;
         static RestService rest;
 
         static void Create(string entity)
-        {
+        {                      
             Console.WriteLine(entity + " create");
             Console.ReadLine();
         }
@@ -27,17 +28,33 @@ namespace EZUJIA_HFT_2022232
         {
             if (entity == "Car")
             {
+                //List<Cars> cars = rest.Get<Cars>("cars");
+                //foreach (var item in cars)
+                //{
+                //    Console.WriteLine(item.CarBrandID);
+                //}
+
+
+
+
                 var items = carlogic.ReadAll();
                 var items2 = carlogic.TheMostFamousBrand();
+                var item3 = carlogic.AvarageHPperCar();
                 Console.WriteLine("Id " + " \t" + "Name");
-                foreach (var item in items2)
+                //foreach (var item in items)
+                //{
+                //    Console.WriteLine(item.CarBrand.Name);
+                //}
+                Console.WriteLine(items2);
+                Console.WriteLine();
+                foreach (var item in item3)
                 {
-                    {
-                        Console.WriteLine(item);
-                    }
-                    Console.ReadLine();
+                    Console.WriteLine(item);
                 }
+
+
             }
+            Console.ReadLine();
         }
         static void Update(string entity)
         {

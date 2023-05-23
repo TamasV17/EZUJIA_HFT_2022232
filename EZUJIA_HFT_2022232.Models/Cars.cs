@@ -22,6 +22,7 @@ namespace EZUJIA_HFT_2022232.Models
         public int PerformanceInHP { get; set; }
 
         public virtual ICollection<Rent> AllRents { get; set; }
+        public virtual CarBrand CarBrand { get; set; }
         public Cars(string path)
         {
             string[] splitarray = path.Split(',');

@@ -34,6 +34,7 @@ namespace EZUJIA_HFT_2022232.Repository
 
 
             modelBuilder.Entity<Cars>(t => t.HasMany(t => t.AllRents).WithOne(t => t.cars).HasForeignKey(t => t.RentId));
+            modelBuilder.Entity<Cars>(t => t.HasOne(t => t.CarBrand).WithMany(t => t.Cars).HasForeignKey(t => t.CarBrandId));
 
 
 

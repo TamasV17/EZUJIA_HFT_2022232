@@ -55,15 +55,29 @@ namespace EZUJIA_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
-        public IEnumerable<int> TheMostFamousBrand()
+        public record TheMostFamous(string name, int count);
+        public TheMostFamous TheMostFamousBrand()
         {
-            return from t in repo.ReadAll()
-                   join y in carbranrepo.ReadAll()
-                   on t.CarBrandId equals y.CarBrandID
-                   group t by t.CarBrandId into g
-                   orderby g.Count() descending
-                   select g.Key;
+            var item = (from t in repo.ReadAll()
+                        group t by t.CarBrand.Name into g
+                        orderby g.Count() descending
+                        select new TheMostFamous(g.Key, g.Count())).First();
 
+            return item;
+
+
+
+        }
+        public record AvarageCarHP(string name, double avarage);
+
+        public IEnumerable<AvarageCarHP> AvarageHPperCar()
+        {
+
+            var item = from t in repo.ReadAll()
+                       group t by t.CarBrand.Name into g
+                       select new AvarageCarHP(g.Key, g.Average(t => t.PerformanceInHP));
+
+            return item;
         }
     }
 }

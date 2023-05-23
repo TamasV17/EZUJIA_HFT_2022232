@@ -14,18 +14,18 @@ namespace EZUJIA_HFT_2022232.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CarBrandID { get; set; }
         public string Name { get; set; }
-
+        public virtual ICollection<Cars> Cars { get; set; }
         public CarBrand(string path)
         {
             string[] array = path.Split(',');
             this.CarBrandID = int.Parse(array[0]);
             this.Name = array[1];
-
+            this.Cars = new HashSet<Cars>();
 
         }
         public CarBrand()
         {
-
+            this.Cars = new HashSet<Cars>();
         }
     }
 }
