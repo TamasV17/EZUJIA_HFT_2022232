@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Models
@@ -22,6 +23,7 @@ namespace EZUJIA_HFT_2022232.Models
         public virtual Cars CarId { get; private set; }
 
         public virtual Employees Employees { get; private set; }
+        [JsonIgnore]
         public virtual Cars cars { get; set; }
 
         public Rent(string path)

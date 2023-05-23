@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EZUJIA_HFT_2022232.Endpoint
+namespace EZUJIA_HFT_2022232.Endpoint.WebApiTest
 {
     public class Program
     {

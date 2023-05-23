@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Models
@@ -14,6 +15,7 @@ namespace EZUJIA_HFT_2022232.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CarBrandID { get; set; }
         public string Name { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Cars> Cars { get; set; }
         public CarBrand(string path)
         {

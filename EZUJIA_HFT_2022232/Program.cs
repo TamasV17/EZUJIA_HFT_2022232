@@ -14,9 +14,9 @@ namespace EZUJIA_HFT_2022232
     class Program
     {
 
-        static CarsLogic carlogic;
-        static CarBrandLogic carbrandlogic;
-        static RentLogic rentslogic;
+        //static CarsLogic carlogic;
+        //static CarBrandLogic carbrandlogic;
+        //static RentLogic rentslogic;
         static RestService rest;
 
         static void Create(string entity)
@@ -28,41 +28,41 @@ namespace EZUJIA_HFT_2022232
         {
             if (entity == "Car")
             {
-                //List<Cars> cars = rest.Get<Cars>("cars");
-                //foreach (var item in cars)
-                //{
-                //    Console.WriteLine(item.CarBrandID);
-                //}
+                List<Cars> cars = rest.Get<Cars>("cars");
+                foreach (var item in cars)
+                {
+                    Console.WriteLine(item.CarBrandId);
+                }
 
 
 
 
-                var items = carlogic.ReadAll();
-                var items2 = carlogic.TheMostFamousBrand();
-                var item3 = carlogic.AvarageHPperCar();
-                var item4 = rentslogic.TheRentsCarBrand();
-                var item5 = rentslogic.BrandperRentsCountsMethod();
-                Console.WriteLine("Id " + " \t" + "Name");
+                //var items = carlogic.ReadAll();
+                //var items2 = carlogic.TheMostFamousBrand();
+                //var item3 = carlogic.AvarageHPperCar();
+                //var item4 = rentslogic.TheRentsCarBrand();
+                //var item5 = rentslogic.BrandperRentsCountsMethod();
+                //Console.WriteLine("Id " + " \t" + "Name");
                 //foreach (var item in items)
                 //{
                 //    Console.WriteLine(item.CarBrand.Name);
                 //}
-                Console.WriteLine(items2);
-                Console.WriteLine();
-                foreach (var item in item3)
-                {
-                    Console.WriteLine(item);
-                }
-                Console.WriteLine();
-                foreach (var item in item4)
-                {
-                    Console.WriteLine(item);
-                }
-                Console.WriteLine();
-                foreach (var item in item5)
-                {
-                    Console.WriteLine(item);
-                }
+                //Console.WriteLine(items2);
+                //Console.WriteLine();
+                //foreach (var item in item3)
+                //{
+                //    Console.WriteLine(item);
+                //}
+                //Console.WriteLine();
+                //foreach (var item in item4)
+                //{
+                //    Console.WriteLine(item);
+                //}
+                //Console.WriteLine();
+                //foreach (var item in item5)
+                //{
+                //    Console.WriteLine(item);
+                //}
 
             }
             Console.ReadLine();
@@ -79,15 +79,16 @@ namespace EZUJIA_HFT_2022232
         }
         static void Main(string[] args)
         {
-            var ctx = new MyDbContext();
-            var carrepo = new CarsRepository(ctx);
-            var carbrandrepo = new CarBrandRepository(ctx);
-            var rentsrepo = new RentsRepository(ctx);
+            rest = new RestService("http://localhost:50437/", "Cars");
+            //var ctx = new MyDbContext();
+            //var carrepo = new CarsRepository(ctx);
+            //var carbrandrepo = new CarBrandRepository(ctx);
+            //var rentsrepo = new RentsRepository(ctx);
 
 
-            carlogic = new CarsLogic(carrepo);
-            carbrandlogic = new CarBrandLogic(carbrandrepo);
-            rentslogic = new RentLogic(rentsrepo);
+            //carlogic = new CarsLogic(carrepo);
+            //carbrandlogic = new CarBrandLogic(carbrandrepo);
+            //rentslogic = new RentLogic(rentsrepo);
             var carSubMenu = new ConsoleMenu(args, level: 1)
                     .Add("List", () => List("Car"))
                     .Add("Create", () => Create("Car"))
