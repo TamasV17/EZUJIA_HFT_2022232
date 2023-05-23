@@ -21,9 +21,9 @@ namespace EZUJIA_HFT_2022232
         }
         static void List(string entity)
         {
-            if (entity == "Cars")
+            if (entity == "Car")
             {
-                List<Cars> cars = rest.Get<Cars>("database");
+                List<Cars> cars = rest.Get<Cars>("cars");
                 foreach (var item in cars)
                 {
                     {
@@ -45,7 +45,7 @@ namespace EZUJIA_HFT_2022232
         }
         static void Main(string[] args)
         {
-                   rest = new RestService("http://localhost:14070/", "database");
+                   rest = new RestService("http://localhost:14070/", "cars");
                    var carSubMenu = new ConsoleMenu(args, level: 1)
                     .Add("List", () => List("Car"))
                     .Add("Create", () => Create("Car"))
