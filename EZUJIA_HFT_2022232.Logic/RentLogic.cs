@@ -11,6 +11,10 @@ namespace EZUJIA_HFT_2022232.Logic
     public class RentLogic : IRentLogic
     {
         IRepository<Rent> repo;
+        public RentLogic(IRepository<Rent> repo)
+        {
+            this.repo = repo;
+        }
         public void Create(Rent item)
         {
             this.repo.Create(item);

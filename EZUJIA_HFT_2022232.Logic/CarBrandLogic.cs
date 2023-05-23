@@ -11,6 +11,10 @@ namespace EZUJIA_HFT_2022232.Logic
     public class CarBrandLogic : ICarBrandLogic
     {
         IRepository<CarBrand> repo;
+        public CarBrandLogic(IRepository<CarBrand> repo)
+        {
+            this.repo = repo;
+        }
         public void Create(CarBrand item)
         {
             this.repo.Create(item);

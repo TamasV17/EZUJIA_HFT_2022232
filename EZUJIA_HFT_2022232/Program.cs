@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EZUJIA_HFT_2022232.Client;
+using EZUJIA_HFT_2022232.Logic;
 
 namespace EZUJIA_HFT_2022232
 {
     class Program
     {
+        static CarsLogic carlogic;
+        static CarBrandLogic carbrandlogic;
+        static RentLogic rentslogic;
         static RestService rest;
 
         static void Create(string entity)
@@ -23,11 +27,13 @@ namespace EZUJIA_HFT_2022232
         {
             if (entity == "Car")
             {
-                List<Cars> cars = rest.Get<Cars>("cars");
-                foreach (var item in cars)
+                var items = carlogic.ReadAll();
+                var items2 = carlogic.TheMostFamousBrand();
+                Console.WriteLine("Id " + " \t" + "Name");
+                foreach (var item in items2)
                 {
                     {
-                        Console.WriteLine(item.CarBrandId);
+                        Console.WriteLine(item);
                     }
                     Console.ReadLine();
                 }
@@ -45,8 +51,16 @@ namespace EZUJIA_HFT_2022232
         }
         static void Main(string[] args)
         {
-                   rest = new RestService("http://localhost:14070/", "cars");
-                   var carSubMenu = new ConsoleMenu(args, level: 1)
+            var ctx = new MyDbContext();
+            var carrepo = new CarsRepository(ctx);
+            var carbrandrepo = new CarBrandRepository(ctx);
+            var rentsrepo = new RentsRepository(ctx);
+
+
+            carlogic = new CarsLogic(carrepo);
+            carbrandlogic = new CarBrandLogic(carbrandrepo);
+            rentslogic = new RentLogic(rentsrepo);
+            var carSubMenu = new ConsoleMenu(args, level: 1)
                     .Add("List", () => List("Car"))
                     .Add("Create", () => Create("Car"))
                     .Add("Delete", () => Delete("Car"))
