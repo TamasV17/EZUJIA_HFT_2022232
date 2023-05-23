@@ -33,7 +33,7 @@ namespace EZUJIA_HFT_2022232.Repository
         {
 
 
-            modelBuilder.Entity<Cars>(t => t.HasMany(t => t.AllRents).WithOne(t => t.cars).HasForeignKey(t => t.RentId));
+            modelBuilder.Entity<Cars>(t => t.HasMany(t => t.AllRents).WithOne(t => t.cars).HasForeignKey(t => t.CarsId));
             modelBuilder.Entity<Cars>(t => t.HasOne(t => t.CarBrand).WithMany(t => t.Cars).HasForeignKey(t => t.CarBrandId));
 
 
@@ -182,6 +182,7 @@ namespace EZUJIA_HFT_2022232.Repository
                 new Rent("1,2020-9-11,Lily Parker,1"),
                 new Rent("3,2012-10-11,Maxwell Foster,2"),
                 new Rent("11,2002-01-11,Ella Clark,3"),
+                new Rent("5,2015-04-25,James Martinez,10"),
                 new Rent("5,2015-04-25,James Martinez,10")
             });
 

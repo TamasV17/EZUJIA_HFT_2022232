@@ -55,6 +55,15 @@ namespace EZUJIA_HFT_2022232.Logic
             return item;
 
         }
+        public record BrandperRentsCount(string brand, int count);
+        public IEnumerable<BrandperRentsCount> BrandperRentsCountsMethod()
+        {
+            var item = from t in repo.ReadAll()
+                       group t by t.cars.CarBrand.Name into g
+                       select new BrandperRentsCount(g.Key, g.Count());
+
+            return item;
+        }
 
     }
 }
