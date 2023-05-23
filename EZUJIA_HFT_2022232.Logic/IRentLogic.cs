@@ -18,5 +18,6 @@ namespace EZUJIA_HFT_2022232.Logic
         Rent Read(int id);
 
         IEnumerable<Rent> ReadAll();
+        IEnumerable<string> TheRentsCarBrand();
     }
 }

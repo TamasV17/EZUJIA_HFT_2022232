@@ -40,6 +40,7 @@ namespace EZUJIA_HFT_2022232
                 var items = carlogic.ReadAll();
                 var items2 = carlogic.TheMostFamousBrand();
                 var item3 = carlogic.AvarageHPperCar();
+                var item4 = rentslogic.TheRentsCarBrand();
                 Console.WriteLine("Id " + " \t" + "Name");
                 //foreach (var item in items)
                 //{
@@ -51,7 +52,11 @@ namespace EZUJIA_HFT_2022232
                 {
                     Console.WriteLine(item);
                 }
-
+                Console.WriteLine();
+                foreach (var item in item4)
+                {
+                    Console.WriteLine(item);
+                }
 
             }
             Console.ReadLine();
