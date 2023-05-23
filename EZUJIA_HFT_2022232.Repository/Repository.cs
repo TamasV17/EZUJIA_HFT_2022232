@@ -6,6 +6,12 @@ namespace EZUJIA_HFT_2022232.Repository
     public abstract class Repository<T> : IRepository<T> where T : class
     {
         protected MyDbContext ctx;
+
+        protected Repository(MyDbContext ctx)
+        {
+            this.ctx = ctx;
+        }
+
         public void Create(T item)
         {
             ctx.Set<T>().Add(item);

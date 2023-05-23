@@ -9,18 +9,18 @@ namespace EZUJIA_HFT_2022232.Repository
 {
     public class CarsRepository : Repository<Cars>
     {
-        public CarsRepository(MyDbContext ctx)
+        public CarsRepository(MyDbContext ctx) : base(ctx)
         {
         }
 
         public override Cars Read(int id)
         {
-            return this.ctx.cars.FirstOrDefault(t => t.RentcarId == id);
+            return this.ctx.cars.FirstOrDefault(t => t.CarsId == id);
         }
 
         public override void Update(Cars id)
         {
-            var olditem = Read(id.CarsID);
+            var olditem = Read(id.CarsId);
             foreach (var item in olditem.GetType().GetProperties())
             {
                 item.SetValue(olditem, item.GetValue(id));

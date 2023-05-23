@@ -10,7 +10,7 @@ namespace EZUJIA_HFT_2022232.Repository
     public class CarBrandRepository : Repository<CarBrand>
     {
 
-        public CarBrandRepository(MyDbContext ctx)
+        public CarBrandRepository(MyDbContext ctx) : base(ctx)
         {
         }
 
