@@ -18,9 +18,10 @@ namespace EZUJIA_HFT_2022232.Logic
 
         public void Create(Cars item)
         {
-            if (item.Year < 1950)
+            var olditem = repo.ReadAll().FirstOrDefault(t => t.CarsId == item.CarsId);
+            if (olditem != null)
             {
-                throw new ArgumentException("The year is too short!");
+                throw new ArgumentException("The car already exists!");
             }
             else
             {
@@ -38,7 +39,7 @@ namespace EZUJIA_HFT_2022232.Logic
             var item = this.repo.Read(id);
             if (item == null)
             {
-                throw new ArgumentException("The car you entered does not exists!");
+                throw new ArgumentException("The car you entered does not exist!");
             }
             else
             {

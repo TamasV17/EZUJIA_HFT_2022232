@@ -17,7 +17,15 @@ namespace EZUJIA_HFT_2022232.Logic
         }
         public void Create(Rent item)
         {
-            this.repo.Create(item);
+            var olditem = repo.ReadAll().FirstOrDefault(t => t.RentId == item.RentId);
+            if (olditem != null)
+            {
+                throw new ArgumentException("The rent already exists!");
+            }
+            else
+            {
+                this.repo.Create(item);
+            }
         }
 
         public void Delete(int id)
@@ -30,7 +38,7 @@ namespace EZUJIA_HFT_2022232.Logic
             var item = this.repo.Read(id);
             if (item == null)
             {
-                throw new Exception("The rent id not exists");
+                throw new Exception("The rent id does not exist");
             }
             else
             {
