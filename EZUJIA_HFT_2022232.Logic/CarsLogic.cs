@@ -68,7 +68,7 @@ namespace EZUJIA_HFT_2022232.Logic
 
 
         }
-        public record AvarageCarHP(string name, double avarage);
+        //public record AvarageCarHP(string name, double avarage);
 
         public IEnumerable<AvarageCarHP> AvarageHPperCar()
         {
@@ -88,6 +88,18 @@ namespace EZUJIA_HFT_2022232.Logic
             {
                 this.name = name;
                 this.count = count;
+            }
+        }
+        public class AvarageCarHP
+        {
+            public string name { get; set; }
+
+            public double avarage { get; set; }
+
+            public AvarageCarHP(string name, double avarage)
+            {
+                this.name = name;
+                this.avarage = avarage;
             }
         }
     }
