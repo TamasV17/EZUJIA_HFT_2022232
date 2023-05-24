@@ -17,7 +17,7 @@ namespace EZUJIA_HFT_2022232.Test
         RentLogic rentlogic;
         Mock<IRepository<Cars>> mockCarRepo;
         Mock<IRepository<CarBrand>> carbrandrepo;
-        //Mock<IRepository<Rents>> rentsrepo;
+        Mock<IRepository<Rent>> rentsrepo;
 
 
         [SetUp]
@@ -37,16 +37,16 @@ namespace EZUJIA_HFT_2022232.Test
                 new CarBrand("5,Volvo")
             }.AsQueryable());
 
-            //rentsrepo = new Mock<IRepository<Rents>>();
-            //rentsrepo.Setup(m => m.ReadAll()).Returns(new List<Rents>()
-            //{
-            //    new Rent("11,2002-01-11,Ella Clark,3"),
-            //    new Rent("5,2015-04-25,James Martinez,10"),
-            //}.AsQueryable());
+            rentsrepo = new Mock<IRepository<Rent>>();
+            rentsrepo.Setup(m => m.ReadAll()).Returns(new List<Rent>()
+            {
+                new Rent("11,2002-01-11,Ella Clark,3"),
+                new Rent("5,2015-04-25,James Martinez,10"),
+            }.AsQueryable());
 
             logic = new CarsLogic(mockCarRepo.Object);
             carbrandlogic = new CarBrandLogic(carbrandrepo.Object);
-            //rentlogic = new RentsLogic(rentsrepo.Object);
+            rentlogic = new RentLogic(rentsrepo.Object);
 
         }
 
@@ -85,7 +85,23 @@ namespace EZUJIA_HFT_2022232.Test
 
 
         }
+        [Test]
+        public void CreateRentsTest()
+        {
+            var car = new Rent()
+            {
+                OwnerName = "Dominic Toretto",
+                RentId = 2,
+                CarsId = 1,
+                RentTime = "1876-05-22"
 
+
+            };
+            rentlogic.Create(car);
+            rentsrepo.Verify(r => r.Create(car), Times.Once);
+
+
+        }
 
 
 
