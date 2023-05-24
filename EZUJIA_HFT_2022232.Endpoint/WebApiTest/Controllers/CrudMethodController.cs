@@ -32,7 +32,7 @@ namespace EZUJIA_HFT_2022232.Endpoint.Controllers
         }
 
         [HttpGet]
-        public TheMostFamous TheMostFamousBrand()
+        public IEnumerable<TheMostFamous> TheMostFamousBrand()
         {
             return carlogic.TheMostFamousBrand();
         }
