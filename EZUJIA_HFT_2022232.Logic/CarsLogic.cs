@@ -56,7 +56,7 @@ namespace EZUJIA_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
-        public record TheMostFamous(string name, int count);
+        //public record TheMostFamous(string name, int count);
         public TheMostFamous TheMostFamousBrand()
         {
             var item = (from t in repo.ReadAll()
@@ -78,6 +78,17 @@ namespace EZUJIA_HFT_2022232.Logic
                        select new AvarageCarHP(g.Key, g.Average(t => t.PerformanceInHP));
 
             return item;
+        }
+        public class TheMostFamous
+        {
+            public string name { get; set; }
+            public int count { get; set; }
+
+            public TheMostFamous(string name, int count)
+            {
+                this.name = name;
+                this.count = count;
+            }
         }
     }
 }
