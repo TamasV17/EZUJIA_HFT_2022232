@@ -63,7 +63,7 @@ namespace EZUJIA_HFT_2022232.Logic
             return item;
 
         }
-        public record BrandperRentsCount(string brand, int count);
+       // public record BrandperRentsCount(string brand, int count);
         public IEnumerable<BrandperRentsCount> BrandperRentsCountsMethod()
         {
             var item = from t in repo.ReadAll()
@@ -71,6 +71,18 @@ namespace EZUJIA_HFT_2022232.Logic
                        select new BrandperRentsCount(g.Key, g.Count());
 
             return item;
+        }
+        public class BrandperRentsCount
+        {
+            public string brand { get; set; }
+
+            public int count { get; set; }
+
+            public BrandperRentsCount(string brand, int count)
+            {
+                this.brand = brand;
+                this.count = count;
+            }
         }
 
     }
