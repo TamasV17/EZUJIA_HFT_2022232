@@ -19,7 +19,7 @@ namespace EZUJIA_HFT_2022232.Logic
         IEnumerable<Cars> ReadAll();
 
         void Update(Cars item);
-        IEnumerable<int> TheMostFamousBrand();
+        TheMostFamous TheMostFamousBrand(); 
         IEnumerable<AvarageCarHP> AvarageHPperCar();
     }
 }

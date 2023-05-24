@@ -195,7 +195,7 @@ namespace EZUJIA_HFT_2022232.Repository
                 new CarBrand("5,Volvo"),
                 new CarBrand("6,Hyundai"),
                 new CarBrand("7,Chevrolet,"),
-                new CarBrand("9,Honda"),
+                new CarBrand("9,Lada"),
                 new CarBrand("10,Toyota"),
                 new CarBrand("11,Honda"),
                 new CarBrand("12,Audi"),

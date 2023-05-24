@@ -13,11 +13,11 @@ namespace EZUJIA_HFT_2022232.Test
     public class TesterClass
     {
         CarsLogic logic;
-        CarBrandLogic carbrandlogic;
-        RentLogic rentlogic;
+        //CarBrandLogic carbrandlogic;
+        //RentsLogic rentlogic;
         Mock<IRepository<Cars>> mockCarRepo;
-        Mock<IRepository<CarBrand>> carbrandrepo;
-        Mock<IRepository<Rent>> rentsrepo;
+        //Mock<IRepository<CarBrand>> carbrandrepo;
+        //Mock<IRepository<Rents>> rentsrepo;
 
 
         [SetUp]
@@ -26,27 +26,27 @@ namespace EZUJIA_HFT_2022232.Test
             mockCarRepo = new Mock<IRepository<Cars>>();
             mockCarRepo.Setup(m => m.ReadAll()).Returns(new List<Cars>()
             {
-                new Cars("1,1,E60,HFG-453,2004,310"),
-                new Cars("5,21,V60,RST-876,2021,300")
+                new Cars("11,1,Civic,HFG-434,2004,310"),
+                new Cars("5,2,Niva,YYY-444,1967,674")
             }.AsQueryable());
 
-            carbrandrepo = new Mock<IRepository<CarBrand>>();
-            carbrandrepo.Setup(m => m.ReadAll()).Returns(new List<CarBrand>()
-            {
-                new CarBrand("1,BMW"),
-                new CarBrand("2,Volvo")
-            }.AsQueryable());
+            //carbrandrepo = new Mock<IRepository<CarBrand>>();
+            //carbrandrepo.Setup(m => m.ReadAll()).Returns(new List<CarBrand>()
+            //{
+            //    new CarBrand("11,Honda"),
+            //    new CarBrand("5,Volvo")
+            //}.AsQueryable());
 
-            rentsrepo = new Mock<IRepository<Rent>>();
-            rentsrepo.Setup(m => m.ReadAll()).Returns(new List<Rent>()
-            {
-                new Rent("1,2020-9-11,Lily Parker,1"),
-                new Rent("5,2015-04-25,James Martinez,10")
-            }.AsQueryable());
+            //rentsrepo = new Mock<IRepository<Rents>>();
+            //rentsrepo.Setup(m => m.ReadAll()).Returns(new List<Rents>()
+            //{
+            //    new Rent("11,2002-01-11,Ella Clark,3"),
+            //    new Rent("5,2015-04-25,James Martinez,10"),
+            //}.AsQueryable());
 
             logic = new CarsLogic(mockCarRepo.Object);
-            carbrandlogic = new CarBrandLogic(carbrandrepo.Object);
-            rentlogic = new RentLogic(rentsrepo.Object);
+            //carbrandlogic = new CarBrandLogic(carbrandrepo.Object);
+            //rentlogic = new RentsLogic(rentsrepo.Object);
 
         }
 
@@ -55,12 +55,13 @@ namespace EZUJIA_HFT_2022232.Test
         {
             var car = new Cars()
             {
-                CarsId = 1,
+                Year = 2000,
                 CarBrandId = 1,
-                Type = "BMW",
-                LicensePlateNumber = "HFG-435",
-                Year = 2004,
-                PerformanceInHP = 310
+                CarsId = 3,
+                PerformanceInHP = 500,
+                Type = "X6",
+                LicensePlateNumber = "ABC-123"
+
 
             };
             logic.Create(car);
@@ -68,6 +69,24 @@ namespace EZUJIA_HFT_2022232.Test
 
 
         }
+
+        //[Test]
+        //public void CreateCarBrandTest()
+        //{
+        //    var carbrand = new CarBrand()
+        //    {
+        //        Name = "Honda",
+        //        CarBrandID = 3
+
+
+        //    };
+        //    carbrandlogic.Create(carbrand);
+        //    carbrandrepo.Verify(r => r.Create(carbrand), Times.Once);
+
+
+        //}
+
+
 
 
     }
