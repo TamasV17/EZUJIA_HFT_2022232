@@ -23,8 +23,12 @@ namespace EZUJIA_HFT_2022232.Repository
             var olditem = Read(id.RentId);
             foreach (var item in olditem.GetType().GetProperties())
             {
-                item.SetValue(olditem, item.GetValue(id));
+                if (item.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    item.SetValue(olditem, item.GetValue(id));
+                }
             }
+            ctx.SaveChanges();
+        }
         }
     }
-}
