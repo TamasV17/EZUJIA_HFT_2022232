@@ -88,18 +88,58 @@ namespace EZUJIA_HFT_2022232.Logic
                 this.name = name;
                 this.count = count;
             }
+            public TheMostFamous()
+            {
+
+            }
+
+            public override bool Equals(object obj)
+            {
+                TheMostFamous b = obj as TheMostFamous;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.name == b.name && this.count == b.count;
+                }
+            }
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.name, this.count);
+            }
         }
+
         public class AvarageCarHP
         {
             public string name { get; set; }
 
             public double avarage { get; set; }
-
             public AvarageCarHP(string name, double avarage)
             {
                 this.name = name;
                 this.avarage = avarage;
             }
+            public override bool Equals(object obj)
+            {
+                AvarageCarHP b = obj as AvarageCarHP;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.name == b.name && this.avarage == b.avarage;
+
+                }
+            }
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.name, this.avarage);
+            }
+
+            
         }
     }
 }

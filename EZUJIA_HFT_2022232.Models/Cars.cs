@@ -41,6 +41,22 @@ namespace EZUJIA_HFT_2022232.Models
             this.AllRents = new HashSet<Rent>();
 
         }
+        public override bool Equals(object obj)
+        {
+            Cars b = obj as Cars;
+            if (b == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.CarsId == b.CarsId;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.CarsId);
+        }
 
 
     }
