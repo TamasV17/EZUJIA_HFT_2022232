@@ -13,35 +13,61 @@ namespace EZUJIA_HFT_2022232
 {
     class Program
     {
-        //static RestService rest;
+        static RestService rest;
         static CarsLogic carlogic;
         static CarBrandLogic carbrandlogic;
         static RentLogic rentslogic;
 
         static void Create(string entity)
         {
-            Console.WriteLine(entity + " create");
-            Console.ReadLine();
+            if (entity == "Car")
+            {
+                Console.WriteLine("Enter the CarId: ");
+                int carid = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the CarBrandId: ");
+                int carbrandid = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the LicensePlateNumber: ");
+                string licenseplatenumberstring = Console.ReadLine();
+                Console.WriteLine("Enter the HorsePower: ");
+                int horsepower = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the Car Type: ");
+                string cartype = Console.ReadLine();
+
+            }
         }
         static void List(string entity)
         {
             if (entity == "Car")
             {
-                //List<Cars> cars = rest.Get<Cars>("cars");
-                //foreach (var item in cars)
-                //{
-                //    Console.WriteLine(item.CarBrandID);
-                //}
-                var items = carlogic.ReadAll();
-                var items2 = carlogic.TheMostFamousBrand();
-                Console.WriteLine("Id " + " \t" + "Name");
-                foreach (var item in items2)
+                List<Cars> cars = rest.Get<Cars>("cars");
+                foreach (var item in cars)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine($" {item.CarsId} {item.CarBrandId} {item.LicensePlateNumber} {item.PerformanceInHP} {item.Type} {item.Year}");
+
                 }
 
 
             }
+            else if (entity == "CarBrand")
+            {
+                List<CarBrand> carbrand = rest.Get<CarBrand>("carbrand");
+                foreach (var item in carbrand)
+                {
+                    Console.WriteLine($"{item.CarBrandID} {item.Name}");
+
+                }
+            }
+
+            else if (entity == "Rents")
+            {
+                List<Rent> rents = rest.Get<Rent>("rents");
+                foreach (var item in rents)
+                {
+                    Console.WriteLine($"{item.RentId} {item.RentTime} {item.OwnerName} {item.CarsId}");
+
+                }
+            }
+
             Console.ReadLine();
         }
         static void Update(string entity)
@@ -57,16 +83,7 @@ namespace EZUJIA_HFT_2022232
         static void Main(string[] args)
         {
             //rest = new RestService("http://localhost:14070/","cars");
-            var ctx = new MyDbContext();
-            var carrepo = new CarsRepository(ctx);
-            var carbrandrepo = new CarBrandRepository(ctx);
-            var rentsrepo = new RentsRepository(ctx);
-
-
-            carlogic = new CarsLogic(carrepo);
-            carbrandlogic = new CarBrandLogic(carbrandrepo);
-            rentslogic = new RentLogic(rentsrepo);
-
+            
 
             var carSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Car"))
