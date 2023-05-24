@@ -145,6 +145,13 @@ namespace EZUJIA_HFT_2022232
                 {
                     Console.WriteLine($"{item.brand} - {item.count}");
                 }
+                Console.WriteLine();
+                Console.WriteLine("YearStatics: ");
+                List<YearInfo> yearstaticslist = rest.Get<YearInfo>("CrudMethod/YearStatistics");
+                foreach (var item in yearstaticslist)
+                {
+                    Console.WriteLine($"{item.Year} - {item.Count}");
+                }
 
                 Console.ReadLine();
             }

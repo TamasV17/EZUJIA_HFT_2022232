@@ -42,6 +42,11 @@ namespace EZUJIA_HFT_2022232.Endpoint.Controllers
         {
             return this.carlogic.AvarageHPperCar();
         }
+        [HttpGet]
+        public IEnumerable<YearInfo> YearStatistics()
+        {
+            return this.rentlogic.YearStatistics();
+        }
 
     }
 }

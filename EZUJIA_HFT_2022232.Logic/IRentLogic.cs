@@ -21,5 +21,6 @@ namespace EZUJIA_HFT_2022232.Logic
         IEnumerable<Rent> ReadAll();
         IEnumerable<string> TheRentsCarBrand();
         IEnumerable<BrandperRentsCount> BrandperRentsCountsMethod();
+        IEnumerable<YearInfo> YearStatistics();
     }
 }
