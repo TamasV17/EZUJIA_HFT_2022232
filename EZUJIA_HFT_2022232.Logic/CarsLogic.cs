@@ -61,7 +61,7 @@ namespace EZUJIA_HFT_2022232.Logic
             var item = (from t in repo.ReadAll()
                         group t by t.CarBrand.Name into g
                         orderby g.Count() descending
-                        select new TheMostFamous(g.Key, g.Count())).First();
+                        select new TheMostFamous(g.Key,g.Count())).First();
 
             return item;
 

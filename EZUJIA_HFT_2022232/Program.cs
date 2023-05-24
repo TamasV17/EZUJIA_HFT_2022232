@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EZUJIA_HFT_2022232.Client;
 using EZUJIA_HFT_2022232.Logic;
+using static EZUJIA_HFT_2022232.Logic.RentLogic;
+using static EZUJIA_HFT_2022232.Logic.CarsLogic;
 
 namespace EZUJIA_HFT_2022232
 {
@@ -110,158 +112,193 @@ namespace EZUJIA_HFT_2022232
 
                 }
             }
-
-            Console.ReadLine();
-        }
-        static void Update(string entity)
-        {
-            if (entity == "Car")
+            else if (entity == "Noncrud")
             {
-                Console.WriteLine("Enter the Car's Id: ");
-                int id = int.Parse(Console.ReadLine());
-                Cars one = rest.Get<Cars>(id, "car");
+                Console.WriteLine("AvgCarHP: ");
+                List<AvarageCarHP> avgcar = rest.Get<AvarageCarHP>("CrudMethod/AvarageHPperCar");
+                foreach (var item in avgcar)
+                {
+                    Console.WriteLine($"{item.name} - {item.avarage}");
+                }
 
-                Console.WriteLine($"Enter the new id[old: {one.CarsId}]");
-                int carsid = int.Parse(Console.ReadLine());
-                one.CarsId = carsid;
-
-                Console.WriteLine($"Enter the new CarBrandId[old: {one.CarBrandId}]: ");
-                int carbrandid = int.Parse(Console.ReadLine());
-                one.CarBrandId = carbrandid;
-
-                Console.WriteLine($"Enter the new LicensePlateNumber[old: {one.LicensePlateNumber}]: ");
-                string licenseplatenumberstring = Console.ReadLine();
-                one.LicensePlateNumber = licenseplatenumberstring;
+                //Console.WriteLine("MostFamousCar");
+                //List<TheMostFamous> mostfamouscar = rest.Get<TheMostFamous>("CrudMethod/TheMostFamousBrand");
+                //foreach (var item in mostfamouscar)
+                //{
+                //    Console.WriteLine($"{item.name} - {item.count}");
+                //}
 
 
-                Console.WriteLine($"Enter the new  HorsePower[old: {one.PerformanceInHP}]: ");
-                int horsepower = int.Parse(Console.ReadLine());
-                one.PerformanceInHP = horsepower;
 
-                Console.WriteLine($"Enter the new Car Type[old: {one.Type}]: ");
-                string cartype = Console.ReadLine();
-                one.Type = cartype;
+                Console.WriteLine();
+                Console.WriteLine("RentsCars: ");
+                List<string> allcar = rest.Get<string>("CrudMethod/TheRentsCarBrand");
+                foreach (var item in allcar)
+                {
+                    Console.WriteLine($"{item}");
+                }
 
-                Console.WriteLine($"Enter the new car  year[old: {one.Year}]: ");
-                int year = int.Parse(Console.ReadLine());
-                one.Year = year;
+                Console.WriteLine();
+                Console.WriteLine("RentsCars: ");
+                List<BrandperRentsCount> brandperrents = rest.Get<BrandperRentsCount>("CrudMethod/BrandperRentsCountsMethod");
+                foreach (var item in brandperrents)
+                {
+                    Console.WriteLine($"{item.brand} - {item.count}");
+                }
 
-                rest.Put(one, "car");
+                Console.ReadLine();
             }
-            else if (entity == "CarBrand")
+            static void Update(string entity)
             {
-                Console.WriteLine("Enter the CarBrand's Id: ");
-                int id = int.Parse(Console.ReadLine());
-                CarBrand one = rest.Get<CarBrand>(id, "carbrand");
+                if (entity == "Car")
+                {
+                    Console.WriteLine("Enter the Car's Id: ");
+                    int id = int.Parse(Console.ReadLine());
+                    Cars one = rest.Get<Cars>(id, "car");
 
-                Console.WriteLine($"Enter the new CarBrandId[old: {one.CarBrandID}]: ");
-                int carbrandid = int.Parse(Console.ReadLine());
-                one.CarBrandID = carbrandid;
+                    Console.WriteLine($"Enter the new id[old: {one.CarsId}]");
+                    int carsid = int.Parse(Console.ReadLine());
+                    one.CarsId = carsid;
 
-                Console.WriteLine($"Enter the new CarBrand Name[old: {one.Name}]: ");
-                string name = Console.ReadLine();
-                one.Name = name;
+                    Console.WriteLine($"Enter the new CarBrandId[old: {one.CarBrandId}]: ");
+                    int carbrandid = int.Parse(Console.ReadLine());
+                    one.CarBrandId = carbrandid;
 
-                rest.Put(one, "carbrand");
+                    Console.WriteLine($"Enter the new LicensePlateNumber[old: {one.LicensePlateNumber}]: ");
+                    string licenseplatenumberstring = Console.ReadLine();
+                    one.LicensePlateNumber = licenseplatenumberstring;
 
 
+                    Console.WriteLine($"Enter the new  HorsePower[old: {one.PerformanceInHP}]: ");
+                    int horsepower = int.Parse(Console.ReadLine());
+                    one.PerformanceInHP = horsepower;
+
+                    Console.WriteLine($"Enter the new Car Type[old: {one.Type}]: ");
+                    string cartype = Console.ReadLine();
+                    one.Type = cartype;
+
+                    Console.WriteLine($"Enter the new car  year[old: {one.Year}]: ");
+                    int year = int.Parse(Console.ReadLine());
+                    one.Year = year;
+
+                    rest.Put(one, "car");
+                }
+                else if (entity == "CarBrand")
+                {
+                    Console.WriteLine("Enter the CarBrand's Id: ");
+                    int id = int.Parse(Console.ReadLine());
+                    CarBrand one = rest.Get<CarBrand>(id, "carbrand");
+
+                    Console.WriteLine($"Enter the new CarBrandId[old: {one.CarBrandID}]: ");
+                    int carbrandid = int.Parse(Console.ReadLine());
+                    one.CarBrandID = carbrandid;
+
+                    Console.WriteLine($"Enter the new CarBrand Name[old: {one.Name}]: ");
+                    string name = Console.ReadLine();
+                    one.Name = name;
+
+                    rest.Put(one, "carbrand");
+
+
+                }
+                else if (entity == "Rents")
+                {
+                    Console.WriteLine("Enter the Rent's Id: ");
+                    int id = int.Parse(Console.ReadLine());
+                    Rent one = rest.Get<Rent>(id, "rents");
+
+                    Console.WriteLine($"Enter the new RentID[old: {one.RentId}]: ");
+                    int rentId = int.Parse(Console.ReadLine());
+                    one.RentId = rentId;
+
+
+                    Console.WriteLine($"Enter the new  RentTime[old: {one.RentTime}]: ");
+                    string renttime = Console.ReadLine();
+                    one.RentTime = renttime;
+
+
+                    Console.WriteLine($"Enter the new Owner Name[old: {one.OwnerName}]: ");
+                    string ownername = Console.ReadLine();
+                    one.OwnerName = ownername;
+
+
+                    Console.WriteLine($"Enter the new CarId[old: {one.CarsId}]: ");
+                    int carid = int.Parse(Console.ReadLine());
+                    one.CarsId = carid;
+
+                    rest.Put(one, "rents");
+
+
+                }
+                //Console.ReadLine();
             }
-            else if (entity == "Rents")
+
+            static void Delete(string entity)
             {
-                Console.WriteLine("Enter the Rent's Id: ");
-                int id = int.Parse(Console.ReadLine());
-                Rent one = rest.Get<Rent>(id, "rents");
-
-                Console.WriteLine($"Enter the new RentID[old: {one.RentId}]: ");
-                int rentId = int.Parse(Console.ReadLine());
-                one.RentId = rentId;
-
-
-                Console.WriteLine($"Enter the new  RentTime[old: {one.RentTime}]: ");
-                string renttime = Console.ReadLine();
-                one.RentTime = renttime;
-
-
-                Console.WriteLine($"Enter the new Owner Name[old: {one.OwnerName}]: ");
-                string ownername = Console.ReadLine();
-                one.OwnerName = ownername;
-
-
-                Console.WriteLine($"Enter the new CarId[old: {one.CarsId}]: ");
-                int carid = int.Parse(Console.ReadLine());
-                one.CarsId = carid;
-
-                rest.Put(one, "rents");
-
-
+                if (entity == "Car")
+                {
+                    Console.WriteLine("Enter the Car's id to delete: ");
+                    int id = int.Parse(Console.ReadLine());
+                    rest.Delete(id, "car");
+                }
+                else if (entity == "CarBrand")
+                {
+                    Console.WriteLine("Enter the CarBrand's id to delete: ");
+                    int id = int.Parse(Console.ReadLine());
+                    rest.Delete(id, "carbrand");
+                }
+                else if (entity == "Rents")
+                {
+                    Console.WriteLine("Enter the Rent's id to delete: ");
+                    int id = int.Parse(Console.ReadLine());
+                    rest.Delete(id, "rents");
+                }
             }
-            //Console.ReadLine();
-        }
-
-        static void Delete(string entity)
-        {
-            if (entity == "Car")
+            static void Main(string[] args)
             {
-                Console.WriteLine("Enter the Car's id to delete: ");
-                int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "car");
+                //rest = new RestService("http://localhost:14070/","cars");
+
+
+                var carSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Car"))
+                    .Add("Create", () => Create("Car"))
+                    .Add("Delete", () => Delete("Car"))
+                    .Add("Update", () => Update("Car"))
+                    .Add("Exit", ConsoleMenu.Close);
+
+                var carbrandSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("CarBrand"))
+                    .Add("Create", () => Create("CarBrand"))
+                    .Add("Delete", () => Delete("CarBrand"))
+                    .Add("Update", () => Update("CarBrand"))
+                    .Add("Exit", ConsoleMenu.Close);
+
+                var rentsSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Rents"))
+                    .Add("Create", () => Create("Rents"))
+                    .Add("Delete", () => Delete("Rents"))
+                    .Add("Update", () => Update("Rents"))
+                    .Add("Exit", ConsoleMenu.Close);
+
+                var noncrudSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Noncrud"));
+
+
+                var menu = new ConsoleMenu(args, level: 0)
+                    .Add("Car", () => carSubMenu.Show())
+                    .Add("CarBrand", () => carbrandSubMenu.Show())
+                    .Add("Rents", () => rentsSubMenu.Show())
+                    .Add("NonCrudmethod", () => noncrudSubMenu.Show())
+                    .Add("Exit", ConsoleMenu.Close);
+
+
+                menu.Show();
+
+
+
+
+
             }
-            else if (entity == "CarBrand")
-            {
-                Console.WriteLine("Enter the CarBrand's id to delete: ");
-                int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "carbrand");
-            }
-            else if (entity == "Rents")
-            {
-                Console.WriteLine("Enter the Rent's id to delete: ");
-                int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "rents");
-            }
-        }
-        static void Main(string[] args)
-        {
-            //rest = new RestService("http://localhost:14070/","cars");
-
-
-            var carSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Car"))
-                .Add("Create", () => Create("Car"))
-                .Add("Delete", () => Delete("Car"))
-                .Add("Update", () => Update("Car"))
-                .Add("Exit", ConsoleMenu.Close);
-
-            var carbrandSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("CarBrand"))
-                .Add("Create", () => Create("CarBrand"))
-                .Add("Delete", () => Delete("CarBrand"))
-                .Add("Update", () => Update("CarBrand"))
-                .Add("Exit", ConsoleMenu.Close);
-
-            var rentsSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Rents"))
-                .Add("Create", () => Create("Rents"))
-                .Add("Delete", () => Delete("Rents"))
-                .Add("Update", () => Update("Rents"))
-                .Add("Exit", ConsoleMenu.Close);
-
-
-
-
-            var menu = new ConsoleMenu(args, level: 0)
-                .Add("Car", () => carSubMenu.Show())
-                .Add("CarBrand", () => carbrandSubMenu.Show())
-                .Add("Rents", () => rentsSubMenu.Show())
-
-                .Add("Exit", ConsoleMenu.Close);
-
-
-            menu.Show();
-
-
-
-
-
         }
     }
 }

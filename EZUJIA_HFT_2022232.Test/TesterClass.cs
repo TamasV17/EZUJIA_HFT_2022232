@@ -27,7 +27,8 @@ namespace EZUJIA_HFT_2022232.Test
             mockCarRepo.Setup(m => m.ReadAll()).Returns(new List<Cars>()
             {
                 new Cars("11,1,Civic,HFG-434,2004,310"),
-                new Cars("5,2,Niva,YYY-444,1967,674")
+                new Cars("5,2,Niva,YYY-444,1967,674"),
+                new Cars("1,3,Focus,XXX-420,2012,145"),
             }.AsQueryable());
 
             carbrandrepo = new Mock<IRepository<CarBrand>>();
