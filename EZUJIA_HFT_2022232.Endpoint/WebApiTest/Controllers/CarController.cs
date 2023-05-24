@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EZUJIA_HFT_2022232.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CarsController : ControllerBase
     {

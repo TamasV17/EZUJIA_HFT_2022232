@@ -56,14 +56,14 @@ namespace EZUJIA_HFT_2022232.Logic
             this.repo.Update(item);
         }
         public record TheMostFamous(string name, int count);
-        public TheMostFamous TheMostFamousBrand()
+        public IEnumerable<int> TheMostFamousBrand()
         {
-            var item = (from t in repo.ReadAll()
-                        group t by t.CarBrand.Name into g
-                        orderby g.Count() descending
-                        select new TheMostFamous(g.Key, g.Count())).First();
-
-            return item;
+            return from t in repo.ReadAll()
+                   join y in carbranrepo.ReadAll()
+                   on t.CarBrandId equals y.CarBrandID
+                   group t by t.CarBrandId into g
+                   orderby g.Count() descending
+                   select g.Key;
 
 
 
