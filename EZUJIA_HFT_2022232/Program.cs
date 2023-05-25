@@ -74,7 +74,7 @@ namespace EZUJIA_HFT_2022232
                     RentTime = renttime,
                     OwnerName = ownername,
                     CarsId = carid
-                }, "rents");
+                }, "rent");
 
             }
         }
@@ -158,11 +158,11 @@ namespace EZUJIA_HFT_2022232
         }
         static void Update(string entity)
         {
-                if (entity == "Car")
+                if (entity == "Cars")
                 {
                     Console.WriteLine("Enter the Car's Id: ");
                     int id = int.Parse(Console.ReadLine());
-                    Cars one = rest.Get<Cars>(id, "car");
+                    Cars one = rest.Get<Cars>(id, "cars");
 
                     Console.WriteLine($"Enter the new id[old: {one.CarsId}]");
                     int carsid = int.Parse(Console.ReadLine());
@@ -189,7 +189,7 @@ namespace EZUJIA_HFT_2022232
                     int year = int.Parse(Console.ReadLine());
                     one.Year = year;
 
-                    rest.Put(one, "car");
+                    rest.Put(one, "cars");
                 }
                 else if (entity == "CarBrand")
                 {
@@ -234,11 +234,10 @@ namespace EZUJIA_HFT_2022232
                     int carid = int.Parse(Console.ReadLine());
                     one.CarsId = carid;
 
-                    rest.Put(one, "rents");
+                    rest.Put(one, "rent");
 
 
                 }
-                //Console.ReadLine();
         }
 
         static void Delete(string entity)
@@ -247,7 +246,7 @@ namespace EZUJIA_HFT_2022232
                 {
                     Console.WriteLine("Enter the Car's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
-                    rest.Delete(id, "car");
+                    rest.Delete(id, "cars");
                 }
                 else if (entity == "CarBrand")
                 {
@@ -259,7 +258,7 @@ namespace EZUJIA_HFT_2022232
                 {
                     Console.WriteLine("Enter the Rent's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
-                    rest.Delete(id, "rents");
+                    rest.Delete(id, "rent");
                 }
         }
 

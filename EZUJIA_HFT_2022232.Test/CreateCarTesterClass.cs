@@ -12,7 +12,7 @@ using static EZUJIA_HFT_2022232.Logic.RentLogic;
 namespace EZUJIA_HFT_2022232.Test
 {
     [TestFixture]
-    public class TesterClass
+    public class CreateCarTesterClass
     {
         CarsLogic logic;
         CarBrandLogic carbrandlogic;
