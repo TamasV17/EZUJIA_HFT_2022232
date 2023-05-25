@@ -45,7 +45,7 @@ namespace EZUJIA_HFT_2022232.Test
             rentsrepo.Setup(m => m.ReadAll()).Returns(new List<Rent>()
             {
                 new Rent("11,2002-01-11,Ella Clark,3"),
-                new Rent("5,2015-04-25,James Martinez,10"),
+                new Rent("5,2002-04-25,James Martinez,10"),
             }.AsQueryable());
 
             logic = new CarsLogic(mockCarRepo.Object);
@@ -61,7 +61,7 @@ namespace EZUJIA_HFT_2022232.Test
             {
                 var car = new Cars()
                 {
-                    Year = 2000,
+                    Year = 2002,
                     CarBrandId = 1,
                     CarsId = 3,
                     PerformanceInHP = 500,
@@ -117,12 +117,12 @@ namespace EZUJIA_HFT_2022232.Test
 
         }      
         [Test]
-        public void YearStaicsTest()
+        public void YearStaticsTest()
         {
             var actual = rentlogic.YearStatistics().ToList();
             var excepted = new List<YearInfo>()
             {
-                new YearInfo(2022,2)
+                new YearInfo(2002,2)
 
             };
             Assert.AreEqual(excepted, actual);

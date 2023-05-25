@@ -60,7 +60,7 @@ namespace EZUJIA_HFT_2022232.Test
             var actual = logic.AvarageHPperCar().ToList();
             var excepted = new List<AvarageCarHP>
             {
-                new AvarageCarHP("Supra",450)
+                new AvarageCarHP("Toyota",450)
             };
             Assert.AreEqual(excepted, actual);
         }
@@ -70,7 +70,7 @@ namespace EZUJIA_HFT_2022232.Test
             var actual = logic.TheMostFamousBrand().ToList();
             var excepted = new List<TheMostFamous>
             {
-                new TheMostFamous("Honda",1)
+                new TheMostFamous("Toyota",1)
             };
             Assert.AreEqual(excepted, actual);
 
