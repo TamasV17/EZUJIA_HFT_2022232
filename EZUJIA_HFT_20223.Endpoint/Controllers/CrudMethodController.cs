@@ -6,7 +6,7 @@ using static EZUJIA_HFT_2022232.Logic.RentLogic;
 
 namespace EZUJIA_HFT_2022232.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class CrudMethodController : ControllerBase
     {

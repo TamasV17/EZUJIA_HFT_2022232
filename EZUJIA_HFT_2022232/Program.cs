@@ -265,16 +265,16 @@ namespace EZUJIA_HFT_2022232
 
         static void Main(string[] args)
         {
-            MyDbContext db = new MyDbContext();
-            CarsRepository carsRepository = new CarsRepository(db);
-            CarsLogic carsLogic = new CarsLogic(carsRepository);
-            IEnumerable<Cars> cars = carsLogic.ReadAll();
-            CarBrandRepository carBrandRepository = new CarBrandRepository(db);
-            CarBrandLogic carBrandLogic = new CarBrandLogic(carBrandRepository);
-            IEnumerable<CarBrand> carBrands = carBrandRepository.ReadAll();
-            RentsRepository rentsRepository = new RentsRepository(db);
-            RentLogic rentLogic = new RentLogic(rentsRepository);
-            IEnumerable<Rent> rents = rentLogic.ReadAll();
+            //MyDbContext db = new MyDbContext();
+            //CarsRepository carsRepository = new CarsRepository(db);
+            //CarsLogic carsLogic = new CarsLogic(carsRepository);
+            //IEnumerable<Cars> cars = carsLogic.ReadAll();
+            //CarBrandRepository carBrandRepository = new CarBrandRepository(db);
+            //CarBrandLogic carBrandLogic = new CarBrandLogic(carBrandRepository);
+            //IEnumerable<CarBrand> carBrands = carBrandRepository.ReadAll();
+            //RentsRepository rentsRepository = new RentsRepository(db);
+            //RentLogic rentLogic = new RentLogic(rentsRepository);
+            //IEnumerable<Rent> rents = rentLogic.ReadAll();
             
             rest = new RestService("http://localhost:60234/", "cars");
 

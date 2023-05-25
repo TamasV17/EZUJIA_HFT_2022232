@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EZUJIA_HFT_2022232.Client
 {
-    class RestService
+    public class RestService
     {
         HttpClient client;
 

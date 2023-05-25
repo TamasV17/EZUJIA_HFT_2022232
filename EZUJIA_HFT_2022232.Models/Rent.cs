@@ -20,6 +20,7 @@ namespace EZUJIA_HFT_2022232.Models
         public string OwnerName { get; set; }
       
         public int CarsId { get; set; }
+        [JsonIgnore]
         public virtual Cars CarId { get; private set; }
         [JsonIgnore]
         public virtual Cars cars { get; set; }

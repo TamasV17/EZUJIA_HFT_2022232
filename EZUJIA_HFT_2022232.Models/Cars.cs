@@ -24,6 +24,7 @@ namespace EZUJIA_HFT_2022232.Models
         [JsonIgnore]
         [NotMapped]
         public virtual ICollection<Rent> AllRents { get; set; }
+        [JsonIgnore]
         public virtual CarBrand CarBrand { get; set; }
         public Cars(string path)
         {
