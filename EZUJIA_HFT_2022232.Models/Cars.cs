@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace EZUJIA_HFT_2022232.Models
 {
@@ -9,7 +10,7 @@ namespace EZUJIA_HFT_2022232.Models
     {
 
         [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CarsId { get; set; }
 
         public string Type { get; set; }
@@ -20,7 +21,8 @@ namespace EZUJIA_HFT_2022232.Models
         public int Year { get; set; }
 
         public int PerformanceInHP { get; set; }
-
+        [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Rent> AllRents { get; set; }
         public virtual CarBrand CarBrand { get; set; }
         public Cars(string path)

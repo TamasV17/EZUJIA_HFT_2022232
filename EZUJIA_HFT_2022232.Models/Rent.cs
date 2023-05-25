@@ -12,7 +12,7 @@ namespace EZUJIA_HFT_2022232.Models
     public class Rent
     {
         [Key]
-       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RentId { get; set; }
 
         public string RentTime { get; set; }
@@ -21,8 +21,6 @@ namespace EZUJIA_HFT_2022232.Models
       
         public int CarsId { get; set; }
         public virtual Cars CarId { get; private set; }
-
-        public virtual Employees Employees { get; private set; }
         [JsonIgnore]
         public virtual Cars cars { get; set; }
 

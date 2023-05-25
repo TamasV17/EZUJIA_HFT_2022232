@@ -12,7 +12,7 @@ namespace EZUJIA_HFT_2022232.Models
     public class CarBrand
     {
         [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CarBrandID { get; set; }
         public string Name { get; set; }
         [JsonIgnore]

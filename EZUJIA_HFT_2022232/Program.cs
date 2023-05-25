@@ -13,12 +13,10 @@ using static EZUJIA_HFT_2022232.Logic.CarsLogic;
 
 namespace EZUJIA_HFT_2022232
 {
-    class Program
+    internal class Program
     {
         static RestService rest;
-        static CarsLogic carlogic;
-        static CarBrandLogic carbrandlogic;
-        static RentLogic rentslogic;
+       
 
         static void Create(string entity)
         {
@@ -124,7 +122,7 @@ namespace EZUJIA_HFT_2022232
                 Console.WriteLine();
                 Console.WriteLine("MostFamousCar");
                 List<TheMostFamous> mostfamouscar = rest.Get<TheMostFamous>("CrudMethod/TheMostFamousBrand");
-                int i = 1;
+                
                 foreach (var item in mostfamouscar)
                 {
                     Console.WriteLine($"1. {item.name} - {item.count}");
@@ -157,8 +155,9 @@ namespace EZUJIA_HFT_2022232
 
                 Console.ReadLine();
             }
-            static void Update(string entity)
-            {
+        }
+        static void Update(string entity)
+        {
                 if (entity == "Car")
                 {
                     Console.WriteLine("Enter the Car's Id: ");
@@ -240,10 +239,10 @@ namespace EZUJIA_HFT_2022232
 
                 }
                 //Console.ReadLine();
-            }
+        }
 
-            static void Delete(string entity)
-            {
+        static void Delete(string entity)
+        {
                 if (entity == "Car")
                 {
                     Console.WriteLine("Enter the Car's id to delete: ");
@@ -262,51 +261,58 @@ namespace EZUJIA_HFT_2022232
                     int id = int.Parse(Console.ReadLine());
                     rest.Delete(id, "rents");
                 }
-            }
-            static void Main(string[] args)
-            {
-                //rest = new RestService("http://localhost:14070/","cars");
+        }
+
+        static void Main(string[] args)
+        {
+            MyDbContext db = new MyDbContext();
+            CarsRepository carsRepository = new CarsRepository(db);
+            CarsLogic carsLogic = new CarsLogic(carsRepository);
+            IEnumerable<Cars> cars = carsLogic.ReadAll();
+            CarBrandRepository carBrandRepository = new CarBrandRepository(db);
+            CarBrandLogic carBrandLogic = new CarBrandLogic(carBrandRepository);
+            IEnumerable<CarBrand> carBrands = carBrandRepository.ReadAll();
+            RentsRepository rentsRepository = new RentsRepository(db);
+            RentLogic rentLogic = new RentLogic(rentsRepository);
+            IEnumerable<Rent> rents = rentLogic.ReadAll();
+            
+            rest = new RestService("http://localhost:60234/", "cars");
 
 
-                var carSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("Car"))
-                    .Add("Create", () => Create("Car"))
-                    .Add("Delete", () => Delete("Car"))
-                    .Add("Update", () => Update("Car"))
-                    .Add("Exit", ConsoleMenu.Close);
+            var carSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Car"))
+                .Add("Create", () => Create("Car"))
+                .Add("Delete", () => Delete("Car"))
+                .Add("Update", () => Update("Car"))
+                .Add("Exit", ConsoleMenu.Close);
 
-                var carbrandSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("CarBrand"))
-                    .Add("Create", () => Create("CarBrand"))
-                    .Add("Delete", () => Delete("CarBrand"))
-                    .Add("Update", () => Update("CarBrand"))
-                    .Add("Exit", ConsoleMenu.Close);
+            var carbrandSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("CarBrand"))
+                .Add("Create", () => Create("CarBrand"))
+                .Add("Delete", () => Delete("CarBrand"))
+                .Add("Update", () => Update("CarBrand"))
+                .Add("Exit", ConsoleMenu.Close);
 
-                var rentsSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("Rents"))
-                    .Add("Create", () => Create("Rents"))
-                    .Add("Delete", () => Delete("Rents"))
-                    .Add("Update", () => Update("Rents"))
-                    .Add("Exit", ConsoleMenu.Close);
+            var rentsSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Rents"))
+                .Add("Create", () => Create("Rents"))
+                .Add("Delete", () => Delete("Rents"))
+                .Add("Update", () => Update("Rents"))
+                .Add("Exit", ConsoleMenu.Close);
 
-                var noncrudSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("All Noncrud method", () => List("Noncrud"));
+            var noncrudSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("All Noncrud method", () => List("Noncrud"));
 
-                var menu = new ConsoleMenu(args, level: 0)
-                    .Add("Car", () => carSubMenu.Show())
-                    .Add("CarBrand", () => carbrandSubMenu.Show())
-                    .Add("Rents", () => rentsSubMenu.Show())
-                    .Add("NonCrudmethod", () => noncrudSubMenu.Show())
-                    .Add("Exit", ConsoleMenu.Close);
-
-
-                menu.Show();
+            var menu = new ConsoleMenu(args, level: 0)
+                .Add("Car", () => carSubMenu.Show())
+                .Add("CarBrand", () => carbrandSubMenu.Show())
+                .Add("Rents", () => rentsSubMenu.Show())
+                .Add("NonCrudmethod", () => noncrudSubMenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
 
 
+            menu.Show();
 
-
-
-            }
         }
     }
 }

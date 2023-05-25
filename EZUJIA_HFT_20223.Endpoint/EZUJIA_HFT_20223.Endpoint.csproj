@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EZUJIA_HFT_2022232.Logic\EZUJIA_HFT_2022232.Logic.csproj" />
-    <ProjectReference Include="..\EZUJIA_HFT_2022232.Models\EZUJIA_HFT_2022232.Models.csproj" />
     <ProjectReference Include="..\EZUJIA_HFT_2022232.Repository\EZUJIA_HFT_2022232.Repository.csproj" />
   </ItemGroup>
 

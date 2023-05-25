@@ -7,44 +7,45 @@ namespace EZUJIA_HFT_2022232.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CarBrandController : ControllerBase
+    public class CarsController : ControllerBase
     {
-        ICarBrandLogic logic;
+        ICarLogic logic;
 
-        public CarBrandController(ICarBrandLogic logic)
+        public CarsController(ICarLogic logic)
         {
             this.logic = logic;
         }
 
-        // GET: api/<CarBrandController>
+
+        // GET: api/<CarsController>
         [HttpGet]
-        public IEnumerable<CarBrand> ReadAll()
+        public IEnumerable<Cars> ReadAll()
         {
             return logic.ReadAll();
         }
 
-        // GET api/<CarBrandController>/5
+        // GET api/<CarsController>/5
         [HttpGet("{id}")]
-        public CarBrand Read(int id)
+        public Cars Read(int id)
         {
             return logic.Read(id);
         }
 
-        // POST api/<CarBrandController>
+        // POST api/<CarsController>
         [HttpPost]
-        public void Create([FromBody] CarBrand value)
+        public void Create([FromBody] Cars value)
         {
             logic.Create(value);
         }
 
-        // PUT api/<CarBrandController>/5
+        // PUT api/<CarsController>/5
         [HttpPut]
-        public void Put([FromBody] CarBrand value)
+        public void Put([FromBody] Cars value)
         {
             logic.Update(value);
         }
 
-        // DELETE api/<CarBrandController>/5
+        // DELETE api/<CarsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
@@ -52,4 +53,3 @@ namespace EZUJIA_HFT_2022232.Endpoint.Controllers
         }
     }
 }
-

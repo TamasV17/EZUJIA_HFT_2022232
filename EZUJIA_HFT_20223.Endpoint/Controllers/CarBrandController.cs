@@ -38,8 +38,8 @@ namespace EZUJIA_HFT_2022232.Endpoint.Controllers
         }
 
         // PUT api/<CarBrandController>/5
-        [HttpPut]
-        public void Put([FromBody] CarBrand value)
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] CarBrand value)
         {
             logic.Update(value);
         }
