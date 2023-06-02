@@ -275,7 +275,9 @@ namespace EZUJIA_HFT_2022232
             //RentLogic rentLogic = new RentLogic(rentsRepository);
             //IEnumerable<Rent> rents = rentLogic.ReadAll();
             
-            rest = new RestService("http://localhost:60234/", "cars");
+            rest = new RestService("http://localhost:63234/", "Cars");
+
+            Console.WriteLine("hello world");
 
 
             var carSubMenu = new ConsoleMenu(args, level: 1)
