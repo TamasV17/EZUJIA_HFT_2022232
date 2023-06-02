@@ -89,6 +89,9 @@ namespace EZUJIA_HFT_2022232
 
                 }
 
+                Console.WriteLine("");
+                Console.WriteLine("Press ENTER to return!");
+                Console.ReadKey();
 
             }
             else if (entity == "CarBrand")
