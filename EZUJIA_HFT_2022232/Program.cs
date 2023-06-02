@@ -42,7 +42,7 @@ namespace EZUJIA_HFT_2022232
                     PerformanceInHP = horsepower,
                     Type = cartype,
                     Year = year
-                }, "car");
+                }, "Cars");
 
 
             }
