@@ -20,7 +20,7 @@ namespace EZUJIA_HFT_2022232
 
         static void Create(string entity)
         {
-            if (entity == "Car")
+            if (entity == "Cars")
             {
                 Console.WriteLine("Enter the CarId: ");
                 int carid = int.Parse(Console.ReadLine());
@@ -42,7 +42,7 @@ namespace EZUJIA_HFT_2022232
                     PerformanceInHP = horsepower,
                     Type = cartype,
                     Year = year
-                }, "Cars");
+                }, "cars");
 
 
             }
@@ -58,7 +58,7 @@ namespace EZUJIA_HFT_2022232
                     Name = name
                 }, "carbrand");
             }
-            else if (entity == "Rents")
+            else if (entity == "Rent")
             {
                 Console.WriteLine("Enter the RentID: ");
                 int rentId = int.Parse(Console.ReadLine());
@@ -80,10 +80,10 @@ namespace EZUJIA_HFT_2022232
         }
         static void List(string entity)
         {
-            if (entity == "Car")
+            if (entity == "Cars")
             {
-                List<Cars> cars = rest.Get<Cars>("cars");
-                foreach (var item in cars)
+                List<Cars> carss = rest.Get<Cars>("cars");
+                foreach (var item in carss)
                 {
                     Console.WriteLine($" {item.CarsId} {item.CarBrandId} {item.LicensePlateNumber} {item.PerformanceInHP} {item.Type} {item.Year}");
 
@@ -102,16 +102,18 @@ namespace EZUJIA_HFT_2022232
                     Console.WriteLine($"{item.CarBrandID} {item.Name}");
 
                 }
+                Console.ReadLine();
             }
-
-            else if (entity == "Rents")
+            
+            else if (entity == "Rent")
             {
-                List<Rent> rents = rest.Get<Rent>("rents");
+                List<Rent> rents = rest.Get<Rent>("rent");
                 foreach (var item in rents)
                 {
                     Console.WriteLine($"{item.RentId} {item.RentTime} {item.OwnerName} {item.CarsId}");
 
                 }
+                Console.ReadLine();
             }
             else if (entity == "Noncrud")
             {
@@ -212,11 +214,11 @@ namespace EZUJIA_HFT_2022232
 
 
                 }
-                else if (entity == "Rents")
+                else if (entity == "Rent")
                 {
                     Console.WriteLine("Enter the Rent's Id: ");
                     int id = int.Parse(Console.ReadLine());
-                    Rent one = rest.Get<Rent>(id, "rents");
+                    Rent one = rest.Get<Rent>(id, "rent");
 
                     Console.WriteLine($"Enter the new RentID[old: {one.RentId}]: ");
                     int rentId = int.Parse(Console.ReadLine());
@@ -245,7 +247,7 @@ namespace EZUJIA_HFT_2022232
 
         static void Delete(string entity)
         {
-                if (entity == "Car")
+                if (entity == "Cars")
                 {
                     Console.WriteLine("Enter the Car's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
@@ -257,7 +259,7 @@ namespace EZUJIA_HFT_2022232
                     int id = int.Parse(Console.ReadLine());
                     rest.Delete(id, "carbrand");
                 }
-                else if (entity == "Rents")
+                else if (entity == "Rent")
                 {
                     Console.WriteLine("Enter the Rent's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
@@ -284,10 +286,10 @@ namespace EZUJIA_HFT_2022232
 
 
             var carSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Car"))
-                .Add("Create", () => Create("Car"))
-                .Add("Delete", () => Delete("Car"))
-                .Add("Update", () => Update("Car"))
+                .Add("List", () => List("Cars"))
+                .Add("Create", () => Create("Cars"))
+                .Add("Delete", () => Delete("Cars"))
+                .Add("Update", () => Update("Cars"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var carbrandSubMenu = new ConsoleMenu(args, level: 1)
@@ -298,19 +300,19 @@ namespace EZUJIA_HFT_2022232
                 .Add("Exit", ConsoleMenu.Close);
 
             var rentsSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Rents"))
-                .Add("Create", () => Create("Rents"))
-                .Add("Delete", () => Delete("Rents"))
-                .Add("Update", () => Update("Rents"))
+                .Add("List", () => List("Rent"))
+                .Add("Create", () => Create("Rent"))
+                .Add("Delete", () => Delete("Rent"))
+                .Add("Update", () => Update("Rent"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var noncrudSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("All Noncrud method", () => List("Noncrud"));
 
             var menu = new ConsoleMenu(args, level: 0)
-                .Add("Car", () => carSubMenu.Show())
+                .Add("Cars", () => carSubMenu.Show())
                 .Add("CarBrand", () => carbrandSubMenu.Show())
-                .Add("Rents", () => rentsSubMenu.Show())
+                .Add("Rent", () => rentsSubMenu.Show())
                 .Add("NonCrudmethod", () => noncrudSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 

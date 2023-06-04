@@ -77,7 +77,7 @@ namespace EZUJIA_HFT_2022232.Repository
                 new Rent("3,2012-10-11,Maxwell Foster,2"),
                 new Rent("11,2002-01-11,Ella Clark,3"),
                 new Rent("5,2015-04-25,James Martinez,10"),
-                new Rent("4,2015-04-25,James Martinez,10")
+                new Rent("4,2016-04-25,James Martinez,11")
             });
 
             modelBuilder.Entity<CarBrand>().HasData(new CarBrand[]
