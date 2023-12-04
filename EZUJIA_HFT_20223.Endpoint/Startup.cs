@@ -1,6 +1,7 @@
 using EZUJIA_HFT_2022232.Logic;
 using EZUJIA_HFT_2022232.Models;
 using EZUJIA_HFT_2022232.Repository;
+using EZUJIA_HFT_20223.Endpoint.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,20 @@ namespace EZUJIA_HFT_20223.Endpoint
             services.AddTransient<IRentLogic, RentLogic>();
             
             services.AddControllers();
+            services.AddCors();
+            services.AddCors(x =>
+            {
+                x.AddDefaultPolicy(policy =>
+                {
+                    
+                    policy.WithOrigins("http://localhost:4700");
+                    policy.AllowAnyHeader();
+                    policy.AllowAnyMethod();
+                    policy.AllowCredentials();
+                });
+            });
+
+            services.AddSignalR();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EZUJIA_HFT_20223.Endpoint", Version = "v1" });
@@ -55,6 +70,7 @@ namespace EZUJIA_HFT_20223.Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EZUJIA_HFT_20223.Endpoint v1"));
             }
+            app.UseCors();
 
             app.UseRouting();
 
@@ -63,6 +79,7 @@ namespace EZUJIA_HFT_20223.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

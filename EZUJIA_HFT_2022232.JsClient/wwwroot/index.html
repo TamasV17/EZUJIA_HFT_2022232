@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Car Database</title>
+</head>
+<body>
+    <header>
+        <a href="cars.html">Cars Database</a>
+        <a href="rents.html">Rents Database</a>
+        <a href="statistics.html">Statistics</a>
+    </header>
+    <h1>CarBrand</h1>
+
+
+    <div class="container">
+
+        <div id="formdiv">
+            <label>Carbrand name:</label>
+            <input type="text" id="carbrandname" />
+            <button type="button" onclick="create()">Add new carbrand</button>
+        </div>
+
+        <div id="updateformdiv">
+            <label>Carbrand name:</label>
+            <input type="text" id="carbrandnameupdate" />
+            <button type="button" onclick="update()">Update carbrand</button>
+        </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+
+
+                </tr>
+
+            </thead>
+            <tbody id="resultarea">
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

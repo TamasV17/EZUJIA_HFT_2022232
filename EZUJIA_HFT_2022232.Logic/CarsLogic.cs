@@ -9,7 +9,7 @@ namespace EZUJIA_HFT_2022232.Logic
     public class CarsLogic : ICarLogic
     {
         IRepository<Cars> repo;
-        IRepository<CarBrand> carbranrepo;
+        IRepository<CarBrand> carbrandrepo;
 
         public CarsLogic(IRepository<Cars> repo)
         {

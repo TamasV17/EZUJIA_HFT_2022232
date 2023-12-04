@@ -1,5 +1,4 @@
-﻿using EZUJIA_HFT_2022232.Models;
-using EZUJIA_HFT_2022232.Repository;
+﻿using EZUJIA_HFT_2022232.Repository;
 using System;
 using ConsoleTools;
 using System.Collections.Generic;
@@ -7,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EZUJIA_HFT_2022232.Client;
+using EZUJIA_HFT_2022232.Models;
 using EZUJIA_HFT_2022232.Logic;
-using static EZUJIA_HFT_2022232.Logic.RentLogic;
 using static EZUJIA_HFT_2022232.Logic.CarsLogic;
+using static EZUJIA_HFT_2022232.Logic.RentLogic;
 
 namespace EZUJIA_HFT_2022232
 {

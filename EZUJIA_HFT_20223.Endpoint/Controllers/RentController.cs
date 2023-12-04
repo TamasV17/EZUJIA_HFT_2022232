@@ -1,6 +1,8 @@
 ﻿using EZUJIA_HFT_2022232.Logic;
 using EZUJIA_HFT_2022232.Models;
+using EZUJIA_HFT_20223.Endpoint.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Collections.Generic;
 
 namespace EZUJIA_HFT_2022232.Endpoint.WebApiTest.Controllers
@@ -10,14 +12,16 @@ namespace EZUJIA_HFT_2022232.Endpoint.WebApiTest.Controllers
         public class RentController : ControllerBase
         {
             IRentLogic logic;
+            IHubContext<SignalRHub> hub;
 
-            public RentController(IRentLogic logic)
-            {
-                this.logic = logic;
-            }
+        public RentController(IRentLogic logic, IHubContext<SignalRHub> hub)
+        {
+            this.logic = logic;
+            this.hub = hub;
+        }
 
-            // GET: api/<RentsController>
-            [HttpGet]
+        // GET: api/<RentsController>
+        [HttpGet]
             public IEnumerable<Rent> ReadAll()
             {
                 return logic.ReadAll();
@@ -35,20 +39,26 @@ namespace EZUJIA_HFT_2022232.Endpoint.WebApiTest.Controllers
             public void Create([FromBody] Rent value)
             {
                 logic.Create(value);
-            }
+            this.hub.Clients.All.SendAsync("RentsCreated", value);
 
-            // PUT api/<RentsController>/5
-            [HttpPut]
+        }
+
+        // PUT api/<RentsController>/5
+        [HttpPut]
             public void Put([FromBody] Rent value)
             {
                 logic.Update(value);
-            }
+            this.hub.Clients.All.SendAsync("RentsUpdated", value);
 
-            // DELETE api/<RentsController>/5
-            [HttpDelete("{id}")]
+        }
+
+        // DELETE api/<RentsController>/5
+        [HttpDelete("{id}")]
             public void Delete(int id)
             {
-                logic.Delete(id);
-            }
+            var item = this.logic.Read(id);
+            logic.Delete(id);
+            this.hub.Clients.All.SendAsync("RentsDeleted", item);
+        }
         }
     }
