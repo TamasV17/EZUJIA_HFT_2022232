@@ -296,7 +296,10 @@ namespace EZUJIA_HFT2022232.WpfClient
                 this.notify.AddHandler<T>(type.Name + "Created", (T item) =>
                 {
                     items.Add(item);
-                    CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                    });
                 });
                 this.notify.AddHandler<T>(type.Name + "Deleted", (T item) =>
                 {
@@ -304,7 +307,10 @@ namespace EZUJIA_HFT2022232.WpfClient
                     if (element != null)
                     {
                         items.Remove(item);
-                        CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                        });
                     }
                     else
                     {
